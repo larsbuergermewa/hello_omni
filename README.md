@@ -13,3 +13,9 @@ This prints:
 ```
 Hello, Omni!
 ```
+
+## Running tests
+
+```sh
+uv run pytest
+```

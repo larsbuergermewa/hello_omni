@@ -1,5 +1,9 @@
+def greet(name: str = "Omni") -> str:
+    return f"Hello, {name}!"
+
+
 def main():
-    print("Hello, Omni!")
+    print(greet())
 
 
 if __name__ == "__main__":
