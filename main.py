@@ -2,7 +2,7 @@ def greet(name: str = "Omni") -> str:
     return f"Hello, {name}!"
 
 
-def main():
+def main() -> None:
     print(greet())
 
 

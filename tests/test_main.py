@@ -1,18 +1,23 @@
 import subprocess
 
+import pytest
+
 from main import greet
 
 
-def test_greet_default():
-    assert greet() == "Hello, Omni!"
-
-
-def test_greet_custom_name():
-    assert greet("World") == "Hello, World!"
-
-
-def test_greet_empty_name():
-    assert greet("") == "Hello, !"
+@pytest.mark.parametrize(
+    ("name", "expected"),
+    [
+        (None, "Hello, Omni!"),
+        ("World", "Hello, World!"),
+        ("", "Hello, !"),
+    ],
+)
+def test_greet(name, expected):
+    if name is None:
+        assert greet() == expected
+    else:
+        assert greet(name) == expected
 
 
 def test_script_output():
@@ -22,4 +27,4 @@ def test_script_output():
         text=True,
         check=True,
     )
-    assert "Hello, Omni!" in result.stdout
+    assert result.stdout == "Hello, Omni!\n"
